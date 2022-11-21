@@ -5,7 +5,7 @@ import server from './server';
 const port = 3000;
 
 mongoose.connect(
-    'mongodb://root:example@db:27017/test?authSource=admin',
+    `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@db:27017/${process.env.DB}?authSource=admin`,
     {
         keepAlive: true,
         keepAliveInitialDelay: 300000,
