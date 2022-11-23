@@ -21,9 +21,12 @@ services:
 
         command: ["mongod", "--auth"]
         environment:
-            MONGO_INITDB_DATABASE: ${db}
-            MONGO_INITDB_ROOT_USERNAME: ${DB_USERNAME}
-            MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+            # MONGO_INITDB_DATABASE: $db
+            # MONGO_INITDB_ROOT_USERNAME: $DB_USERNAME
+            # MONGO_INITDB_ROOT_PASSWORD: $DB_PASSWORD
+            MONGO_INITDB_DATABASE: dbcomicscollect
+            MONGO_INITDB_ROOT_USERNAME: comicsco
+            MONGO_INITDB_ROOT_PASSWORD: mdp
         volumes:
             - db-comics-collect:/data/db
 

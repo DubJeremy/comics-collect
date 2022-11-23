@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import documentRoutes from './document/document.routes';
+import seriesRoutes from './series/series.routes';
 
 const router = Router();
 
@@ -11,7 +11,7 @@ router.get('/health', (req, res) =>
     }),
 );
 
-router.use('/v1/document', documentRoutes);
+router.use('/series', seriesRoutes);
 router.use('*', (req, res) => res.sendStatus(404));
 
 export default router;

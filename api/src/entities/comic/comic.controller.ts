@@ -1,13 +1,13 @@
-import Document from './document.model';
+import Comic from './comic.model';
 import { Request, Response } from 'express';
 
-export default class EmployeeController {
+export default class ComicController {
     static async create(req: Request, res: Response) {
         try {
-            const document = new Document(req.body);
-            await document.save();
+            const comic = new Comic(req.body);
+            await comic.save();
 
-            return res.json(document);
+            return res.json(comic);
         } catch (e) {
             console.error(e);
             return res.status(500).json({ error: e });
@@ -18,9 +18,9 @@ export default class EmployeeController {
         try {
             const { id } = req.params;
 
-            const document = await Document.findOneAndUpdate({ _id: id }, req.body);
+            const comic = await Comic.findOneAndUpdate({ _id: id }, req.body);
 
-            return res.json(document);
+            return res.json(comic);
         } catch (e) {
             console.error(e);
             return res.status(500).json({ error: e });
@@ -31,9 +31,9 @@ export default class EmployeeController {
         try {
             const { id } = req.params;
 
-            const document = await Document.findById(id);
+            const comic = await Comic.findById(id);
 
-            return res.json(document);
+            return res.json(comic);
         } catch (e) {
             console.error(e);
             return res.status(500).json({ error: e });
@@ -42,9 +42,9 @@ export default class EmployeeController {
 
     static async getAll(req: Request, res: Response) {
         try {
-            const documents = await Document.find({});
+            const comics = await Comic.find({});
 
-            return res.json(documents);
+            return res.json(comics);
         } catch (e) {
             console.error(e);
             return res.status(500).json({ error: e });
