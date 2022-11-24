@@ -2,16 +2,16 @@ import mongoose, { Schema } from 'mongoose';
 import mongooseLeanDefaults from 'mongoose-lean-defaults';
 import mongooseLeanVirtuals from 'mongoose-lean-virtuals';
 
-import { ComicInterface, SeriesInterface } from '../../public/types';
+import { ComicInterface, SeriesInterface, AuthorInterface } from '../../public/types';
 
 const Comic = new Schema<ComicInterface>(
     {
         title: String,
         number: { type: Number },
-        author: { type: String, required: true },
         haveIt: { type: Boolean, required: true, default: false },
         researched: { type: Boolean, required: true, default: false },
-        // serie : [SeriesInterface]
+        author: { type: String, required: true },
+        serie: { type: [], required: false },
     },
     {
         toJSON: { getters: true, virtuals: true },

@@ -50,4 +50,17 @@ export default class ComicController {
             return res.status(500).json({ error: e });
         }
     }
+
+    static async delete(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+
+            const comic = await Comic.deleteOne({ _id: id });
+
+            return res.json(comic);
+        } catch (e) {
+            console.error(e);
+            return res.status(500).json({ error: e });
+        }
+    }
 }

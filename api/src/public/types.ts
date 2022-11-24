@@ -2,15 +2,20 @@ export interface SeriesInterface {
     title: string;
     done: boolean;
     preview?: string;
-    author: string;
+    author: AuthorInterface;
     comics?: ComicInterface[];
 }
 export interface ComicInterface {
     title?: string;
     number?: number;
     preview?: string;
-    author: string;
     haveIt: boolean;
     researched: boolean;
-    serie: SeriesInterface;
+    author: AuthorInterface;
+    serie?: SeriesInterface;
+}
+export interface AuthorInterface {
+    name: string;
+    comics?: ComicInterface[];
+    serie?: SeriesInterface[];
 }
