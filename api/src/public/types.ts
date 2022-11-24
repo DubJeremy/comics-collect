@@ -12,10 +12,10 @@ export interface ComicInterface {
     haveIt: boolean;
     researched: boolean;
     author: AuthorInterface;
-    serie?: SeriesInterface;
+    series?: SeriesInterface;
 }
 export interface AuthorInterface {
     name: string;
     comics?: ComicInterface[];
-    serie?: SeriesInterface[];
+    series?: SeriesInterface[];
 }

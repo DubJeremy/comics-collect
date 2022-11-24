@@ -11,7 +11,7 @@ const Comic = new Schema<ComicInterface>(
         haveIt: { type: Boolean, required: true, default: false },
         researched: { type: Boolean, required: true, default: false },
         author: { type: String, required: true },
-        serie: { type: [], required: false },
+        series: { type: [], required: false },
     },
     {
         toJSON: { getters: true, virtuals: true },

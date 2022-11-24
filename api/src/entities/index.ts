@@ -2,6 +2,7 @@ import { Router } from 'express';
 
 import seriesRoutes from './series/series.routes';
 import comicsRoutes from './comic/comic.routes';
+import authorRoutes from './author/author.routes';
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.get('/health', (req, res) =>
 
 router.use('/series', seriesRoutes);
 router.use('/comics', comicsRoutes);
+router.use('/author', authorRoutes);
 router.use('*', (req, res) => res.sendStatus(404));
 
 export default router;
