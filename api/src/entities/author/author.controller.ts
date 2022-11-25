@@ -2,12 +2,11 @@ import Author from './author.model';
 import { Request, Response } from 'express';
 
 export default class AuthorController {
-    static async create(req: any, res: any) {
+    static async createAuthor(req: any, res: any) {
         try {
-            const author = new Author(req.body);
+            const author = new Author(req);
             await author.save();
-
-            return res.json(author);
+            return author;
         } catch (e) {
             console.error(e);
             return res.status(500).json({ error: e });

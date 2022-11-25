@@ -2,15 +2,15 @@ import mongoose, { Schema } from 'mongoose';
 import mongooseLeanDefaults from 'mongoose-lean-defaults';
 import mongooseLeanVirtuals from 'mongoose-lean-virtuals';
 
-import { ComicInterface, SeriesInterface } from '../../public/types';
+import { SerieInterface } from '../../public/types';
 
-const Series = new Schema<SeriesInterface>(
+const Serie = new Schema<SerieInterface>(
     {
         title: { type: String, required: true, trim: true },
         done: { type: Boolean, required: true },
         preview: { type: String, required: false },
-        author: { type: String, required: true, trim: true },
-        comics: { type: [], required: false },
+        author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author', trim: true },
+        comics: { type: mongoose.Schema.Types.ObjectId, ref: 'Comics', required: false },
     },
     {
         toJSON: { getters: true, virtuals: true },
@@ -19,7 +19,7 @@ const Series = new Schema<SeriesInterface>(
     },
 );
 
-Series.virtual('lastPayForm', {
+Serie.virtual('lastPayForm', {
     ref: 'PayForm',
     localField: '_id',
     foreignField: 'employee',
@@ -27,10 +27,10 @@ Series.virtual('lastPayForm', {
     options: { sort: { monthDate: -1 } },
 });
 
-Series.index({ createdAt: 1 });
-Series.index({ updatedAt: 1 });
+Serie.index({ createdAt: 1 });
+Serie.index({ updatedAt: 1 });
 
-Series.plugin(mongooseLeanVirtuals);
-Series.plugin(mongooseLeanDefaults);
+Serie.plugin(mongooseLeanVirtuals);
+Serie.plugin(mongooseLeanDefaults);
 
-export default mongoose.model<SeriesInterface>('Series', Series);
+export default mongoose.model<SerieInterface>('Serie', Serie);

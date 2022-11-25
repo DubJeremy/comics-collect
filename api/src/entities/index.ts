@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
-import seriesRoutes from './series/series.routes';
+import seriesRoutes from './serie/serie.routes';
 import comicsRoutes from './comic/comic.routes';
-import authorRoutes from './author/author.routes';
+import authorsRoutes from './author/author.routes';
 
 const router = Router();
 
@@ -13,9 +13,9 @@ router.get('/health', (req, res) =>
     }),
 );
 
-router.use('/series', seriesRoutes);
-router.use('/comics', comicsRoutes);
-router.use('/author', authorRoutes);
+router.use('/serie', seriesRoutes);
+router.use('/comic', comicsRoutes);
+router.use('/author', authorsRoutes);
 router.use('*', (req, res) => res.sendStatus(404));
 
 export default router;

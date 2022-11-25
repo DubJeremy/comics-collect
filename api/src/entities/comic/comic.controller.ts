@@ -2,12 +2,18 @@ import Comic from './comic.model';
 import { Request, Response } from 'express';
 
 export default class ComicController {
-    static async create(req: Request, res: Response) {
+    static async createComic(req: any, res: any, authorOfTheComic: any) {
         try {
-            const comic = new Comic(req.body);
+            const comic = new Comic({
+                title: req.title,
+                number: req.number,
+                haveIt: req.haveIt,
+                researched: req.researched,
+                author: authorOfTheComic,
+            });
             await comic.save();
 
-            return res.json(comic);
+            return comic;
         } catch (e) {
             console.error(e);
             return res.status(500).json({ error: e });

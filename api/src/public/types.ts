@@ -1,4 +1,4 @@
-export interface SeriesInterface {
+export interface SerieInterface {
     title: string;
     done: boolean;
     preview?: string;
@@ -12,10 +12,10 @@ export interface ComicInterface {
     haveIt: boolean;
     researched: boolean;
     author: AuthorInterface;
-    series?: SeriesInterface;
+    serie?: SerieInterface;
 }
 export interface AuthorInterface {
     name: string;
-    comics?: ComicInterface[];
-    series?: SeriesInterface[];
+    comic?: ComicInterface[];
+    serie?: SerieInterface[];
 }

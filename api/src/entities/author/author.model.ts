@@ -2,13 +2,13 @@ import mongoose, { Schema } from 'mongoose';
 import mongooseLeanDefaults from 'mongoose-lean-defaults';
 import mongooseLeanVirtuals from 'mongoose-lean-virtuals';
 
-import { ComicInterface, SeriesInterface, AuthorInterface } from '../../public/types';
+import { AuthorInterface } from '../../public/types';
 
 const Author = new Schema<AuthorInterface>(
     {
-        name: { type: String, required: true, trim: true },
-        series: { type: String, required: false },
-        comics: { type: [], required: false },
+        name: { type: String, required: true, trim: true, unique: true },
+        serie: { type: mongoose.Schema.Types.ObjectId, ref: 'Serie', required: false },
+        comic: { type: mongoose.Schema.Types.ObjectId, ref: 'Comics', required: false },
     },
     {
         toJSON: { getters: true, virtuals: true },

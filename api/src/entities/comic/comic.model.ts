@@ -2,7 +2,7 @@ import mongoose, { Schema } from 'mongoose';
 import mongooseLeanDefaults from 'mongoose-lean-defaults';
 import mongooseLeanVirtuals from 'mongoose-lean-virtuals';
 
-import { ComicInterface, SeriesInterface, AuthorInterface } from '../../public/types';
+import { ComicInterface } from '../../public/types';
 
 const Comic = new Schema<ComicInterface>(
     {
@@ -10,8 +10,8 @@ const Comic = new Schema<ComicInterface>(
         number: { type: Number },
         haveIt: { type: Boolean, required: true, default: false },
         researched: { type: Boolean, required: true, default: false },
-        author: { type: String, required: true },
-        series: { type: [], required: false },
+        author: { type: mongoose.Schema.Types.ObjectId, ref: 'Author', required: true },
+        serie: { type: mongoose.Schema.Types.ObjectId, ref: 'Series', required: false },
     },
     {
         toJSON: { getters: true, virtuals: true },
