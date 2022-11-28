@@ -4,10 +4,12 @@ export interface SerieInterface {
     preview?: string;
     author: AuthorInterface;
     comics?: ComicInterface[];
+    nbOfComics: number;
 }
 export interface ComicInterface {
-    title?: string;
-    number?: number;
+    title: string;
+    subtitle?: string;
+    number: number;
     preview?: string;
     haveIt: boolean;
     researched: boolean;

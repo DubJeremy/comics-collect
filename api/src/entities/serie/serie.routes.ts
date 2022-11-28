@@ -5,7 +5,7 @@ import SerieServices from './serie.service';
 
 const router = Router();
 
-router.post('/', SerieServices.createSerieAndAuthor);
+router.post('/', SerieServices.createSerieComicsAuthor);
 router.get('/', SerieController.getSeries);
 router.get('/:id', SerieController.getById);
 router.patch('/:id', SerieController.edit);

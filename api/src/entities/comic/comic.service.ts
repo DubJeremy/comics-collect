@@ -9,7 +9,8 @@ export default class ComicServices {
             if (authorOfTheComic === null) {
                 authorOfTheComic = await AuthorController.createAuthor(req.body.author, res);
             }
-            const comic = await ComicController.createComic(req.body, res, authorOfTheComic?.id);
+            let number = req.body.number;
+            const comic = await ComicController.createComic(req.body, res, authorOfTheComic?.id, number);
 
             return res.json(comic);
         } catch (e) {

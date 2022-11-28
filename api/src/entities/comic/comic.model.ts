@@ -7,6 +7,7 @@ import { ComicInterface } from '../../public/types';
 const Comic = new Schema<ComicInterface>(
     {
         title: String,
+        subtitle: { type: String, required: false },
         number: { type: Number },
         haveIt: { type: Boolean, required: true, default: false },
         researched: { type: Boolean, required: true, default: false },

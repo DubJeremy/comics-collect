@@ -2,11 +2,12 @@ import Comic from './comic.model';
 import { Request, Response } from 'express';
 
 export default class ComicController {
-    static async createComic(req: any, res: any, authorOfTheComic: any) {
+    static async createComic(req: any, res: any, authorOfTheComic: any, number: number) {
         try {
             const comic = new Comic({
                 title: req.title,
-                number: req.number,
+                subtitle: req.subtitle,
+                number: number,
                 haveIt: req.haveIt,
                 researched: req.researched,
                 author: authorOfTheComic,

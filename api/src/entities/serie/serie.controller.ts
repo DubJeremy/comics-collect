@@ -2,9 +2,15 @@ import Serie from './serie.model';
 import { Request, Response } from 'express';
 
 export default class SerieController {
-    static async createSerie(req: any, res: any, authorOfTheSerie: any) {
+    static async createSerie(req: any, res: any, authorOfTheSerie: any, comicsOfTheSerie: any) {
         try {
-            const serie = new Serie({ title: req.title, done: req.done, author: authorOfTheSerie });
+            const serie = new Serie({
+                title: req.title,
+                done: req.done,
+                author: authorOfTheSerie,
+                nbOfComics: req.nbOfComics,
+                comics: comicsOfTheSerie,
+            });
             await serie.save();
 
             return serie;
@@ -31,6 +37,9 @@ export default class SerieController {
         let where: any = {}; // TODO create types for requests
         if (req.query.isDone !== undefined) {
             where.done = req.query.isDone;
+        } else if (req.query.author !== undefined) {
+            where.author = req.query.author;
+            console.log(where);
         }
         try {
             const series = await Serie.find(where);
