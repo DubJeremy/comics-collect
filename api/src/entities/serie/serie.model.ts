@@ -30,6 +30,10 @@ Serie.virtual('lastPayForm', {
 
 Serie.index({ createdAt: 1 });
 Serie.index({ updatedAt: 1 });
+Serie.index({ title: 1 });
+Serie.index({ done: 1 });
+Serie.index({ comics: 1 });
+Serie.index({ author: 1 });
 
 Serie.plugin(mongooseLeanVirtuals);
 Serie.plugin(mongooseLeanDefaults);

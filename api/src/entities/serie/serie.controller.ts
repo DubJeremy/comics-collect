@@ -35,13 +35,22 @@ export default class SerieController {
 
     static async getSeries(req: Request, res: Response) {
         let where: any = {}; // TODO create types for requests
-        if (req.query.isDone !== undefined) {
-            where.done = req.query.isDone;
-        } else if (req.query.author !== undefined) {
-            where.author = req.query.author;
-            console.log(where);
-        }
+        let search = req.query.search;
         try {
+            if (req.query.isDone !== undefined) {
+                where.done = req.query.isDone;
+            } else if (search !== undefined) {
+                let regex = new RegExp(`${search}`, 'ig');
+                const series = await Serie.find({ title: { $regex: regex } });
+                // if (series[0] === undefined) {
+                //     const series = await Serie.find({ title: { $regex: regex } });
+
+                //     return res.json(series);
+                // }
+                // console.log('$regex', series[1]);
+
+                return res.json(series);
+            }
             const series = await Serie.find(where);
 
             return res.json(series);
