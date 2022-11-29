@@ -1,0 +1,50 @@
+:root {
+    --white: #ffffff;
+
+    --black: #2d2d2d;
+    --black-soft: #918f8f;
+    --black-mute: #282828;
+
+    --indigo: #2c3e50;
+    --crimson: #9e0e40;
+    --crimson-soft: #9e0e405a;
+}
+
+:root {
+    --background: var(--white);
+
+    --section-gap: 160px;
+}
+
+/* @media (prefers-scheme: dark) {
+    :root {
+        --background: var(--black-soft);
+
+        --border: var(--white);
+
+        --text: var(--white);
+    }
+} */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    position: relative;
+    font-weight: normal;
+}
+
+body {
+    min-height: 100vh;
+    color: var(--white);
+    background: var(--black-soft);
+    transition: color 0.5s, background-color 0.5s;
+    line-height: 1.6;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+        sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
