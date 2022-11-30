@@ -13,7 +13,6 @@ import Header from "./components/Header.vue";
 
 <style>
 header {
-    line-height: 1.5;
     height: 20vh;
     width: 100vw;
 }
